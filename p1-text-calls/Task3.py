@@ -43,3 +43,32 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+# fixed line: check for 0
+# mobile: check for 7, 8, 9
+# telemarketers: check for 140
+# one per line
+# lexicographic order (abc) with no duplicates
+
+FIXED = 0
+MOBILE = [7, 8, 9]
+TELE = 140
+
+# Get all numbers: DONE
+# Remove duplicates: DONE
+# Get the codes: WIP
+# Iterate through numbers
+# Look for the conditions
+ 
+all_text_numbers = [text[0] for text in texts] + [text[1] for text in texts]
+all_call_numbers = [call[0] for call in calls] + [call[1] for call in calls]
+all_numbers = list(set(all_text_numbers + all_call_numbers))
+
+codes = []
+
+for num in all_numbers:
+  if '(' in num:
+    fixed_area_code = num[num.find('(')+1:num.find(')')]
+    codes.append(fixed_area_code)
+
+print(codes)
+# print('The numbers called by people in Bangalore have codes:\n{}'.format(codes))
