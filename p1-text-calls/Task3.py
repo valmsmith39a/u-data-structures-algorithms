@@ -80,7 +80,7 @@ print('The numbers called by people in Bangalore have codes:')
 for code in codes:
   print(code)
 
-'''
+"""
 Part B
 
 Objective: Find percentage of calls from Bangalore are also to Bangalore
@@ -90,7 +90,7 @@ Steps:
 * Of the calls from Bangalore, 
 find the calls that are also to Bangalore
 * Compute percentage
-'''
+"""
 
 BANGALORE = '080'
 calls_from_bangalore = []

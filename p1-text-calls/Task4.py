@@ -25,3 +25,44 @@ Print a message:
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 
+"""
+* Set of possible telemarketers
+
+* Outgoing calls but no texts
+
+* Don't receive texts and don't receive incoming calls
+
+Objective: 
+Find potential telemarketers
+
+General Steps:
+# Which numbers make outgoing calls but no texts
+# Which numbers never receive incoming calls
+
+Pseudocode:
+# Get all outgoing call numbers
+# Get all incoming call numbers
+# Get all text numbers
+# Of the outgoing call numbers, which numbers are not in incoming calls
+# Of the outgoing call nunbers, which numbers numbers are not in texts
+"""
+import re
+
+outgoing_calls = [call[0] for call in calls]
+incoming_calls = [call[1] for call in calls]
+all_text_numbers = [text[0] for text in texts] + [text[1] for text in texts]
+
+outgoing_not_incoming_numbers = [outgoing_call for outgoing_call in outgoing_calls if outgoing_call not in incoming_calls]
+potential_tele_numbers = [ out_not_in_num for out_not_in_num in outgoing_not_incoming_numbers if out_not_in_num not in all_text_numbers]
+
+# remove duplicates
+potential_tele_numbers = list(set(potential_tele_numbers))
+# remove parentheses and whitespaces
+potential_tele_numbers = [re.sub(r"[\s()]", '', num) for num in potential_tele_numbers]
+# sort in lexicographic order
+potential_tele_numbers.sort(key=int)
+
+print('These numbers could be telemarketers:')
+for num in potential_tele_numbers:
+  print(num)
+  
