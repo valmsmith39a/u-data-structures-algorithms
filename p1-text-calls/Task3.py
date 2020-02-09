@@ -43,6 +43,7 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+# Part A
 # fixed line: check for 0
 # mobile: check for 7, 8, 9
 # telemarketers: check for 140
@@ -58,7 +59,7 @@ all_call_numbers = [call[0] for call in calls] + [call[1] for call in calls]
 all_numbers = list(set(all_text_numbers + all_call_numbers))
 codes = []
 
-for num in all_numbers[:50]:
+for num in all_numbers:
   if num.startswith('('):
     fixed_area_code = num[num.find('(')+1: num.find(')')]
     codes.append(fixed_area_code)
@@ -73,4 +74,57 @@ for num in all_numbers[:50]:
 codes = list(set(codes))
 codes.sort(key=int)
 
-print('The numbers called by people in Bangalore have codes:\n{}'.format(codes))
+print('PART A')
+print('\n')
+print('The numbers called by people in Bangalore have codes:')
+for code in codes:
+  print(code)
+
+'''
+Part B
+
+Objective: Find percentage of calls from Bangalore are also to Bangalore
+
+Steps:
+* Find all calls from Bangalore
+* Of the calls from Bangalore, 
+find the calls that are also to Bangalore
+* Compute percentage
+'''
+
+BANGALORE = '080'
+calls_from_bangalore = []
+calls_from_to_bangalore = []
+
+for call in calls:
+  call_from = call[0]
+
+  if call_from.startswith('('):
+    code = call_from[call_from.find('(')+1:call_from.find(')')] 
+    
+    if code == BANGALORE:
+      calls_from_bangalore.append(code)
+      call_to = call[1]
+
+      if call_to.startswith('('):
+        code = call_to[call_to.find('(')+1:call_to.find(')')] 
+        
+        if code == BANGALORE:
+          calls_from_to_bangalore.append(code)
+
+  
+num_calls_from_bangalore = len(calls_from_bangalore)
+num_calls_from_to_bangalore = len(calls_from_to_bangalore)
+
+percent_calls_from_to_bangalore = round(num_calls_from_to_bangalore / num_calls_from_bangalore, 2) * 100
+
+print('\n')
+print('PART B')
+print('{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.'.format(percent_calls_from_to_bangalore))
+
+
+
+    
+
+
+
