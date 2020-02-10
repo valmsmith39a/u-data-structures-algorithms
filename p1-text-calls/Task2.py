@@ -38,6 +38,3 @@ max_caller_1 = max(numbers_dict, key=numbers_dict.get)
 max_caller, max_duration = max(numbers_dict.items(), key = lambda x: x[1])
 
 print('{} spent the longest time, {} seconds on the phone during September 2016'.format(max_caller, max_duration))
-
-
-

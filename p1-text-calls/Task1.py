@@ -19,7 +19,6 @@ Print a message:
 "There are <count> different telephone numbers in the records."
 """
 
-# Method 1 
 diff_numbers = []
 numbers = texts + calls
 

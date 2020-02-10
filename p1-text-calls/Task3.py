@@ -43,13 +43,19 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
-# Part A
+
+"""
+
+Own Notes
+
+Part A:
 # fixed line: check for 0
 # mobile: check for 7, 8, 9
 # telemarketers: check for 140
 # one per line
 # lexicographic order (abc) with no duplicates
 
+"""
 FIXED = ('0')
 MOBILE = ('7', '8', '9')
 TELE = ('140')
@@ -81,15 +87,19 @@ for code in codes:
   print(code)
 
 """
-Part B
+
+Own Notes
+
+Part B:
 
 Objective: Find percentage of calls from Bangalore are also to Bangalore
 
 Steps:
-* Find all calls from Bangalore
-* Of the calls from Bangalore, 
+# Find all calls from Bangalore
+# Of the calls from Bangalore, 
 find the calls that are also to Bangalore
-* Compute percentage
+# Compute percentage
+
 """
 
 BANGALORE = '080'
@@ -121,10 +131,3 @@ percent_calls_from_to_bangalore = round(num_calls_from_to_bangalore / num_calls_
 print('\n')
 print('PART B')
 print('{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.'.format(percent_calls_from_to_bangalore))
-
-
-
-    
-
-
-

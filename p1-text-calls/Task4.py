@@ -26,14 +26,16 @@ The list of numbers should be print out one per line in lexicographic order with
 """
 
 """
-* Set of possible telemarketers
 
-* Outgoing calls but no texts
+Own Notes
 
-* Don't receive texts and don't receive incoming calls
+Background:
+# Set of possible telemarketers
+# Outgoing calls but no texts
+# Don't receive texts and don't receive incoming calls
 
 Objective: 
-Find potential telemarketers
+#Find potential telemarketers
 
 General Steps:
 # Which numbers make outgoing calls but no texts
@@ -45,6 +47,7 @@ Pseudocode:
 # Get all text numbers
 # Of the outgoing call numbers, which numbers are not in incoming calls
 # Of the outgoing call nunbers, which numbers numbers are not in texts
+
 """
 import re
 
