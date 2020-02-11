@@ -33,8 +33,27 @@ for call in calls:
   else:
     numbers_dict[call[1]] = int(call[3])
 
-max_caller_1 = max(numbers_dict, key=numbers_dict.get)
-
+# numbers_dict.items() => list of tuples ex. [('78130 00821', 26368), ('98453 94494', 26368)]
+# x is each tuple
 max_caller, max_duration = max(numbers_dict.items(), key = lambda x: x[1])
 
 print('{} spent the longest time, {} seconds on the phone during September 2016'.format(max_caller, max_duration))
+
+"""
+
+Runtime Analysis
+
+This algorithm takes O(n) time (linear time).
+
+We first iterate through all the calls in the for loop and 
+create a dictionary to store all unique call numbers with
+each number's time accumulated over all the calls.
+This will take O(n) time in best and worst cases.
+
+We then find the max duration by using Python's max function which
+takes O(n) time. 
+https://stackoverflow.com/questions/5454030/how-efficient-is-pythons-max-function
+
+The total runtime is 2 * O(n) which, after dropping constants, simplifies to O(n).
+
+"""

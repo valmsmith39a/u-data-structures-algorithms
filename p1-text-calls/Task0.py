@@ -31,11 +31,11 @@ print('Last record of calls, {} calls {} at time {}'.format(last_call_in_num, la
 
 """
 
-Run-time Analysis: Worst Case Big O Notation
+Runtime Analysis
 
 This set of operations will take O(1) time (constant time).
 
-The run-time is the same for small or large n because we are always
+The runtime is the same for small or large n because we are always
 getting data from the first and last elements.
 
 """
