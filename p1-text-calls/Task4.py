@@ -68,4 +68,29 @@ potential_tele_numbers.sort(key=int)
 print('These numbers could be telemarketers:')
 for num in potential_tele_numbers:
   print(num)
+
+
+"""
+
+TASK 4 Runtime Analysis
+
+outgoing calls list comprehension: O(n)
+incoming calls list comp: O(n)
+all text numbers list comp: O(n)
+
+outgoing not incoming list comp: 
+- for loop: O(i)
+- Python's `in` operator: O(j)
+- `in` operator run on each item in for loop, so runtime is: O(i)*O(j)
+
+potential telemarketers list comp: 
+- for loop: O(k)
+- Python's `in` operator: O(l)
+- `in` operator run on each item in for loop, so runtime is: O(k)*O(l)
+
+(3 * O(n)) + (O(i) * O(j)) + (O(k) * O(l)) => 
+
+O(ij) + O(kl) + O(n)
+
+"""
   

@@ -88,6 +88,38 @@ for code in codes:
 
 """
 
+TASK 3A Runtime Analysis
+
+Get all the text numbers, which takes 2 * O(a) time
+
+Get all the call numbers, which takes 2 * O(b) time
+
+Filter out duplicate numbers by using Python's set function which takes O(c) time
+Construct a list by using Python's list function which takes O(d) time
+https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt
+
+Python's startswith takes O(1) time
+
+The for loop takes O(e) time
+
+Python's string find function takes O(fg) time in the worst case.
+We have 3 instances of find, which have runtimes of O(fg), O(fh), O(fi)
+https://stackoverflow.com/questions/29728969/worst-case-time-complexity-of-str-find-in-python
+
+Sorting the list of codes takes O(j log j) time.
+https://stackoverflow.com/questions/14434490/what-is-the-complexity-of-this-python-sort-method
+
+Total runtime is:
+
+2*O(a) + 2*O(b) + O(c) + O(d) + O(1) + O(e) + O(fg) + O(fh) + O(fi) + O(j log j) 
+
+Simplified and rearranged runtime is: 
+O(j log j) + O(fg) + O(fh) + O(fi) + O(a) + O(b) + O(c) + O(d) + O(e) + O(1)
+
+"""
+
+"""
+
 Own Notes
 
 Part B:
@@ -131,3 +163,43 @@ percent_calls_from_to_bangalore = round(num_calls_from_to_bangalore / num_calls_
 print('\n')
 print('PART B')
 print('{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.'.format(percent_calls_from_to_bangalore))
+
+
+"""
+
+TASK 3B  Runtime Analysis
+
+Note: I tried using fewer variables here to simplify, but representation is not as accurate.
+
+(1)
+The for loop takes O(n) time
+
+Python's startswith takes O(1) time
+
+Python's find function takes O(mn) time
+
+Python's len function takes O(1) time
+https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt
+
+(2)
+Worst case runtime is:
+
+for loop: O(n)
+
+startswith: 2 * O(1)
+
+find: 4 * O(mn)
+
+len: O(1)
+
+4*O(mn) + O(n) + 3 * O(1)
+
+which simplifies to:
+
+O(mn) + O(n) + O(1)
+
+and taking the longest runtime would give us:
+
+O(mn)
+
+"""

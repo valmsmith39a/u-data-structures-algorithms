@@ -1,0 +1,141 @@
+In addition to this summary, I also included analysis in each Task file which makes 
+referencing the code easier.
+
+***
+
+TASK 0
+
+This set of operations will take O(1) time (constant time).
+
+The runtime is the same for small or large n because we are always
+getting data from the first and last elements.
+
+***
+
+TASK 1
+
+(1) for loop: O(m)
+
+(2) Python's in operator: O(n) (worst case), used 2 times => 2 * O(n)
+https://wiki.python.org/moin/TimeComplexity
+
+(3) Python's len function takes O(1) time
+https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt
+
+(4) This algorithm takes O(m) * 2 * O(n) time, which simplifies to O(mn) time.
+
+In the best case, all the numbers are the same and we do only 1 insertion 
+into diff_numbers array, although we still have to iterate through all 
+the numbers collected in calls and texts.
+
+In the worst case, all the numbers are different and we insert all 
+the numbers into the diff_numbers array.
+
+***
+
+TASK 2 
+
+This algorithm takes O(n) time (linear time).
+
+We first iterate through all the calls in the for loop and 
+create a dictionary to store all unique call numbers with
+each number's time accumulated over all the calls.
+This will take O(n) time in best and worst cases.
+
+We then find the max duration by using Python's max function which
+takes O(n) time. 
+https://stackoverflow.com/questions/5454030/how-efficient-is-pythons-max-function
+
+The total runtime is 2 * O(n) which, after dropping constants, simplifies to O(n).
+
+***
+
+TASK 3A 
+
+Get all the text numbers, which takes 2 * O(a) time
+
+Get all the call numbers, which takes 2 * O(b) time
+
+Filter out duplicate numbers by using Python's set function which takes O(c) time
+Construct a list by using Python's list function which takes O(d) time
+https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt
+
+Python's startswith takes O(1) time
+
+The for loop takes O(e) time
+
+Python's string find function takes O(fg) time in the worst case.
+We have 3 instances of find, which have runtimes of O(fg), O(fh), O(fi)
+https://stackoverflow.com/questions/29728969/worst-case-time-complexity-of-str-find-in-python
+
+Sorting the list of codes takes O(j log j) time.
+https://stackoverflow.com/questions/14434490/what-is-the-complexity-of-this-python-sort-method
+
+Total runtime is:
+
+2*O(a) + 2*O(b) + O(c) + O(d) + O(1) + O(e) + O(fg) + O(fh) + O(fi) + O(j log j) 
+
+Simplified and rearranged runtime is: 
+O(j log j) + O(fg) + O(fh) + O(fi) + O(a) + O(b) + O(c) + O(d) + O(e) + O(1)
+
+***
+
+TASK 3B
+
+Note: I tried using fewer variables here to simplify, but representation is not as accurate.
+
+(1)
+The for loop takes O(n) time
+
+Python's startswith takes O(1) time
+
+Python's find function takes O(mn) time
+
+Python's len function takes O(1) time
+https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt
+
+(2)
+Worst case runtime is:
+
+for loop: O(n)
+
+startswith: 2 * O(1)
+
+find: 4 * O(mn)
+
+len: O(1)
+
+4*O(mn) + O(n) + 3 * O(1)
+
+which simplifies to:
+
+O(mn) + O(n) + O(1)
+
+and taking the longest runtime would give us:
+
+O(mn)
+
+***
+
+TASK 4
+
+outgoing calls list comprehension: O(n)
+incoming calls list comp: O(n)
+all text numbers list comp: O(n)
+
+outgoing not incoming list comp: 
+- for loop: O(i)
+- Python's `in` operator: O(j)
+- `in` operator run on each item in for loop, so runtime is: O(i)*O(j)
+
+potential telemarketers list comp: 
+- for loop: O(k)
+- Python's `in` operator: O(l)
+- `in` operator run on each item in for loop, so runtime is: O(k)*O(l)
+
+(3 * O(n)) + (O(i) * O(j)) + (O(k) * O(l)) => 
+
+O(ij) + O(kl) + O(n)
+
+***
+
