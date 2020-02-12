@@ -1,8 +1,10 @@
 # create a node 
+"""
 class Node:
 	def __init__(self, value):
 		self.value = value
 		self.next = None
+"""
 
 """
 head = Node(2)
@@ -92,8 +94,105 @@ def create_linked_list_better(input_values):
       tail = tail.next
 
   return head
-
+"""
 input_values = [1, 2, 3, 4, 5, 6]
 new_head = create_linked_list_better(input_values)
 print('create a new linked list, the values are: ')
 print_linked_list(new_head)
+"""
+
+# Define a Singly Linked List class with methods that operate on the list
+
+# Define a node
+class Node:
+  def __init__(self, value):
+    self.value = value
+    self.next = None
+
+class LinkedList:
+  def __init__(self):
+    self.head = None
+
+  # add a node to the end of the list
+  # method takes O(n) time, linear time
+  def append(self, value):
+    if self.head is None:
+      self.head = Node(value)
+      return
+    
+    node = self.head
+    while node.next:
+      node = node.next
+    
+    node.next = Node(value)
+    node = node.next
+    return
+  
+  # convert linked list to a Python list
+  def to_list(self):
+    # iterate through linked list and insert value of each node into the python list
+    # get the head
+    node = self.head
+    py_list = []
+    
+    while node:
+      py_list.append(node.value)
+      node = node.next
+    
+    return py_list
+
+""" 
+# create a LinkedList object
+linked_list = LinkedList()
+
+# create nodes for the linked list
+linked_list.append(1)
+linked_list.append(2)
+linked_list.append(3)
+
+# print out values of linked list
+node = linked_list.head
+while node:
+  print(node.value)
+  node = node.next
+"""
+
+# Define a doubly linked list class with methods that operate on the list
+
+class DoubleNode:
+  def __init__(self, value):
+    self.value = value
+    self.next = None
+    self.previous = None
+
+
+class DoublyLinkedList:
+  def __init__(self):
+    self.head = None 
+    self.tail = None
+
+  # add a node to the end of a doubly linked list in contant time, O(1) time.
+  def append(self, value):
+    # get the head
+    if self.head is None:
+      self.head = DoubleNode(value)
+      self.tail = self.head
+      return
+
+    self.tail.next = DoubleNode(value)
+    self.tail.next.previous = self.tail
+    self.tail = self.tail.next
+    return 
+    
+# create a doubly linked list and add nodes to the list
+doubly_linked_list = DoublyLinkedList()
+doubly_linked_list.append(4)
+doubly_linked_list.append(5)
+doubly_linked_list.append(6)
+
+# print the nodes of the doubly linked list
+node = doubly_linked_list.head
+while node:
+  print(node.value)
+  node = node.next
+  
