@@ -218,8 +218,20 @@ class LinkedList:
     new_head = Node(value)
     new_head.next = self.head
     self.head = new_head
-    return 
+    return
 
+  def search(self, value):
+    if self.head is None:
+      return None
+
+    node = self.head
+      
+    while node:
+      if node.value is value:
+        return node
+      node = node.next
+
+    return None
 
 # Test prepend
 linked_list = LinkedList()
@@ -232,6 +244,11 @@ node = linked_list.head
 while node:
   print(node.value)
   node = node.next
+
+# Test search
+
+found_node = linked_list.search(2)
+print('found node', found_node.value)
 
 
 
