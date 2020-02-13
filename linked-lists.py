@@ -32,15 +32,14 @@ while current_node.next is not None:
 """
 
 # iterative method to create a linked list
-
+"""
 # print a linked list (to test create method later)
 def print_linked_list(head):
 	current_node = head
 	while current_node.next is not None:
 		print(current_node.value)
 		current_node = current_node.next
-
-
+"""
 # create a linked list: method 1 
 # runtime is O(n^2), quadratic time
 def create_linked_list(input_list):
@@ -101,6 +100,7 @@ print('create a new linked list, the values are: ')
 print_linked_list(new_head)
 """
 
+"""
 # Define a Singly Linked List class with methods that operate on the list
 
 # Define a node
@@ -141,7 +141,7 @@ class LinkedList:
     
     return py_list
 
-""" 
+
 # create a LinkedList object
 linked_list = LinkedList()
 
@@ -158,7 +158,7 @@ while node:
 """
 
 # Define a doubly linked list class with methods that operate on the list
-
+"""
 class DoubleNode:
   def __init__(self, value):
     self.value = value
@@ -190,9 +190,50 @@ doubly_linked_list.append(4)
 doubly_linked_list.append(5)
 doubly_linked_list.append(6)
 
+"""
 # print the nodes of the doubly linked list
+"""
 node = doubly_linked_list.head
 while node:
   print(node.value)
   node = node.next
+"""
+
+class Node:
+  def __init__(self, value):
+    self.value = value
+    self.next = None
+
+
+class LinkedList:
+  def __init__(self):
+    self.head = None
   
+  # runtime: O(1) time, constant time
+  def prepend(self, value):
+    if self.head is None:
+      self.head = Node(value)
+      return 
+    
+    new_head = Node(value)
+    new_head.next = self.head
+    self.head = new_head
+    return 
+
+
+# Test prepend
+linked_list = LinkedList()
+linked_list.prepend(1)
+linked_list.prepend(2)
+linked_list.prepend(3)
+
+node = linked_list.head
+
+while node:
+  print(node.value)
+  node = node.next
+
+
+
+
+
