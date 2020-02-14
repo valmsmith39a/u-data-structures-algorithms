@@ -246,11 +246,38 @@ while node:
   node = node.next
 
 # Test search
-
+"""
 found_node = linked_list.search(2)
 print('found node', found_node.value)
+"""
 
+# Runtime: O(n), linear time
+def remove(self, value):
+  """ Remove first occurrence of value. """
 
+  if self.head is None:
+      return
 
+  if self.head.value == value:
+      self.head = self.head.next
+      return
 
+  node = self.head
 
+  while node.next:
+    if node.next.value == value:
+        node.next = node.next.next
+        return
+    node = node.next
+
+def pop(self):
+  """ Return the first node's value and remove it from the list. """
+
+  if self.head is None:
+      return None
+
+  node = self.head
+  self.head = self.head.next
+
+  return node.value
+  
