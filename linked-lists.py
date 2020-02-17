@@ -280,4 +280,36 @@ def pop(self):
   self.head = self.head.next
 
   return node.value
+
+def insert(self, value, pos):
+  """ Insert value at pos position in the list. If pos is larger than the
+      length of the list, append to the end of the list. """
+      
+  if pos == 0:
+      self.prepend(value)
+      return
   
+  node = self.head
+  index = 0
+  
+  while node.next and index <= pos:
+      if (pos - 1) == index:
+          new_node = Node(value)
+          new_node.next = node.next
+          node.next = new_node
+          return 
+      node = node.next
+      index +=1
+  else:
+      self.append(value)
+
+# runtime: O(n), linear time
+def size(self):
+  """ Return the size or length of the linked list. """
+  size = 0
+  node = self.head
+  while node:
+      size += 1
+      node = node.next
+      
+  return size
