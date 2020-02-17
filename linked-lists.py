@@ -313,3 +313,18 @@ def size(self):
       node = node.next
       
   return size
+
+# reverse a linked list
+# runtime: O(n)
+def reverse(linked_list):
+    new_list = LinkedList()
+    prev_node = None
+
+    for value in linked_list:
+        new_node = Node(value)
+        new_node.next = prev_node
+        prev_node = new_node
+  
+    new_list.head = prev_node
+
+    return new_list
