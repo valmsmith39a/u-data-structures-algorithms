@@ -1,0 +1,56 @@
+# runtime: O(n)
+def add_one(arr):
+    output = 1;
+
+    for i in range(len(arr), 0, -1):
+        output = output + arr[i - 1]
+        borrow = output//10
+        if borrow == 0:
+            arr[i - 1] = output
+            break
+        else:
+            arr[i - 1] = output % 10
+            output = borrow
+    arr = [borrow] + arr
+    index = 0
+    while arr[index]==0:
+        index += 1
+    return arr[index:]
+
+# time complexity: O(n), linear time
+# space complexity: O(1), constant space
+def duplicate_number(arr):
+    current_sum = 0
+    expected_sum = 0
+    
+    for num in arr:
+        current_sum += num
+        
+    for i in range(len(arr) - 1):
+        expected_sum += i
+        
+    return current_sum - expected_sum
+
+# get max subarray method 1
+def max_sum_subarray(arr):
+  """
+  :param - arr - input array
+  return - number - largest sum in contiguous subarry within arr
+  """
+  size = len(arr)
+  sums = []
+  for i, num_i in enumerate(arr):
+      for j, num_j in enumerate(arr):
+          sums.append(sum(arr[i: size - j]))
+
+  return max(sums)
+
+# get max subarray method 2
+def max_sum_subarray2(arr):
+  max_sum = arr[0]
+  current_sum = arr[0]
+
+  for num in arr[1:]:
+      current_sum = max(current_sum + num, num)
+      max_sum = max(current_sum, max_sum)
+  return max_sum
