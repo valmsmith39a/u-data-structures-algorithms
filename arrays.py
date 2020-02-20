@@ -54,3 +54,48 @@ def max_sum_subarray2(arr):
       current_sum = max(current_sum + num, num)
       max_sum = max(current_sum, max_sum)
   return max_sum
+
+  # Pascal's Triangle
+  # Method 1
+  # runtime: O(n^2 + n)
+  def nth_row_pascal(n):
+    row = []
+    prev_row = []
+    
+    if n == 0:
+        return [1]
+    
+    for i in range(n):
+        if i == 0:
+            prev_row = [0, 1, 0]
+            for idx, num in enumerate(prev_row):
+                if idx == (len(prev_row) - 1):
+                    break
+                row.append(num + prev_row[idx + 1])
+        else:
+            prev_row = row
+            prev_row.insert(0, 0)
+            prev_row.append(0)
+            row = []
+            for idx, num in enumerate(prev_row):
+                if idx == (len(prev_row) - 1):
+                    break
+                row.append(num + prev_row[idx + 1])
+            
+    return row 
+
+# Pascal's Triangle: Solution 2
+
+def nth_row_pascal(n):
+  if n == 0:
+      return [1]
+
+  current_row = [1]
+  for i in range(1, n + 1):
+      prev_row = current_row
+      current_row = [1]
+      for j in range(1, i):
+          next_number = prev_row[j] + prev_row[j-1]
+          current_row.append(next_number)
+      current_row.append(1)
+  return current_row
