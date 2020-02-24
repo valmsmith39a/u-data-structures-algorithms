@@ -172,3 +172,50 @@ def skip_i_delete_j(head, i, j):
             current = next_node
         previous.next = current
     return head
+
+
+# swap nodes - method 1
+def swap_nodes(head, left_index, right_index):
+    """
+    :param: head- head of input linked list
+    :param: left_index - indicates position
+    :param: right_index - indicates position
+    return: head of updated linked list with nodes swapped
+    """
+    
+    if head is None:
+        return head
+    
+    node = head
+    i_node = None
+    j_node = None
+    i_prev_node = None
+    j_node_node = None
+    idx = 0
+
+    while node:
+        idx += 1
+        
+        if left_index == 0:
+            i_node = head
+            i_prev_node = i_node
+            head = i_node
+            
+        if idx == left_index - 1:
+            i_prev_node = node
+            i_node = node.next
+            
+        elif idx == right_index - 1:
+            j_prev_node = node
+            j_node = node.next
+        
+            i_prev_node.next = j_node
+            j_prev_node.next = i_node
+            
+            temp_next_node = i_node.next
+            i_node.next = j_node.next
+            j_node.next = temp_next_node
+
+        node = node.next
+    
+    return head
