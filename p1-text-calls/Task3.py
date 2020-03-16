@@ -45,38 +45,58 @@ The percentage should have 2 decimal digits
 """
 
 """
-
 Own Notes
 
 Part A:
+# Find the telephone codes called by fixed line numbers in Banglore
+# Get all calls with outbound numbers from fixed lines from Bangalore
+# From calls from Bangalore, get the codes from the inbound numbers
 # fixed line: check for 0
 # mobile: check for 7, 8, 9
 # telemarketers: check for 140
 # one per line
 # lexicographic order (abc) with no duplicates
 
+Steps:
+# iterate through each call
+# in each outbound number, look for Bangalore
+# get the inbound number for the call from Bangalore
+# get the code from the inbound number
+
 """
+
+FIXED_BANGALORE = '080'
 FIXED = ('0')
 MOBILE = ('7', '8', '9')
 TELE = ('140')
 
-all_text_numbers = [text[0] for text in texts] + [text[1] for text in texts]
-all_call_numbers = [call[0] for call in calls] + [call[1] for call in calls]
-all_numbers = list(set(all_text_numbers + all_call_numbers))
+numbers_called_by_fixed_bangalore = []
 codes = []
 
-for num in all_numbers:
+# Get all called-to numbers (inbound) with called-from numbers (outbound) from Bangalore
+for call in calls:
+  number_from = call[0]
+  number_to = call[1]
+
+  if number_from.startswith('('):
+     fixed_area_code = number_from[number_from.find('(')+1: number_from.find(')')]
+     
+     if fixed_area_code == FIXED_BANGALORE:
+       numbers_called_by_fixed_bangalore.append(number_to)
+
+# Get the codes from the numbers called by fixed line numbers from Bangalore
+for num in numbers_called_by_fixed_bangalore:
   if num.startswith('('):
     fixed_area_code = num[num.find('(')+1: num.find(')')]
     codes.append(fixed_area_code)
 
   elif num.startswith(MOBILE):
-    mobile_code = num[: num.find(' ')]
+    mobile_code = num[: num.find(' ') - 1]
     codes.append(mobile_code)
 
   elif num.startswith(TELE):
     codes.append('140')
-  
+
 codes = list(set(codes))
 codes.sort(key=int)
 
@@ -160,9 +180,9 @@ num_calls_from_to_bangalore = len(calls_from_to_bangalore)
 
 percent_calls_from_to_bangalore = round(num_calls_from_to_bangalore / num_calls_from_bangalore, 2) * 100
 
-print('\n')
-print('PART B')
-print('{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.'.format(percent_calls_from_to_bangalore))
+# print('\n')
+# print('PART B')
+# print('{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.'.format(percent_calls_from_to_bangalore))
 
 
 """
