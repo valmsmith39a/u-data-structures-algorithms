@@ -25,9 +25,10 @@ first_text_time = texts[0][2]
 last_call_in_num = calls[len(calls) - 1][0]
 last_call_ans_num = calls[len(calls) - 1][1]
 last_call_time = calls[len(calls) - 1][2]
+last_call_duration = calls[len(calls) - 1][3]
 
 print('First record of texts, {} texts {} at time {}'.format(first_text_in_num, first_text_ans_num, first_text_time))
-print('Last record of calls, {} calls {} at time {}'.format(last_call_in_num, last_call_ans_num, last_call_time))
+print('Last record of calls, {} calls {} at time {}, lasting {} seconds'.format(last_call_in_num, last_call_ans_num, last_call_time, last_call_duration))
 
 """
 
