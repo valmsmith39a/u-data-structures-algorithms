@@ -74,23 +74,25 @@ for num in potential_tele_numbers:
 
 TASK 4 Runtime Analysis
 
-outgoing calls list comprehension: O(n)
-incoming calls list comp: O(n)
-all text numbers list comp: O(n)
+outgoing calls list comprehension: O(a)
+incoming calls list comprehension: O(a)
+all text numbers: O(b) + O(b) = 2*O(b) => O(b)
 
-outgoing not incoming list comp: 
-- for loop: O(i)
-- Python's `in` operator: O(j)
-- `in` operator run on each item in for loop, so runtime is: O(i)*O(j)
+outgoing not incoming: 
+- for loop: O(c)
+- Python's `in` operator: O(d)
+- `in` operator run on each item in for loop, so runtime is: O(cd)
 
-potential telemarketers list comp: 
-- for loop: O(k)
-- Python's `in` operator: O(l)
-- `in` operator run on each item in for loop, so runtime is: O(k)*O(l)
+potential telemarketers:
+- for loop: O(e)
+- Python's `in` operator: O(f)
+- `in` operator run on each item in for loop, so runtime is: O(ef)
 
-(3 * O(n)) + (O(i) * O(j)) + (O(k) * O(l)) => 
+O(a) + O(a) + O(b) + O(b) + O(cd) + O(ef) =>
 
-O(ij) + O(kl) + O(n)
+2*O(a) + 2*O(b) + O(cd) + O(ef) => 
+
+O(a) + O(b) + O(cd) + O(ef)
 
 """
   

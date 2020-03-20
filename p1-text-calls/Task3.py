@@ -62,10 +62,11 @@ Steps:
 # in each outbound number, look for Bangalore
 # get the inbound number for the call from Bangalore
 # get the code from the inbound number
-
 """
 
 FIXED_BANGALORE = '080'
+TELE_CODE = '140'
+
 FIXED = ('0')
 MOBILE = ('7', '8', '9')
 TELE = ('140')
@@ -95,8 +96,9 @@ for num in numbers_called_by_fixed_bangalore:
     codes.append(mobile_code)
 
   elif num.startswith(TELE):
-    codes.append('140')
+    codes.append(TELE_CODE)
 
+# remove duplicates
 codes = list(set(codes))
 codes.sort(key=int)
 
@@ -110,39 +112,30 @@ for code in codes:
 
 TASK 3A Runtime Analysis
 
-Get all the text numbers, which takes 2 * O(a) time
+Get the numbers called by fixed lines in Bangalore, the for loop takes O(a) time.
 
-Get all the call numbers, which takes 2 * O(b) time
+Get the codes from the numbers called by fixed lines in Bangalore, the for loop takes O(b) time.
 
 Filter out duplicate numbers by using Python's set function which takes O(c) time
 Construct a list by using Python's list function which takes O(d) time
 https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt
 
-Python's startswith takes O(1) time
+Runtime is:
+O(a) + O(b) + O(c) + O(d)
 
-The for loop takes O(e) time
-
-Python's string find function takes O(fg) time in the worst case.
-We have 3 instances of find, which have runtimes of O(fg), O(fh), O(fi)
-https://stackoverflow.com/questions/29728969/worst-case-time-complexity-of-str-find-in-python
-
-Sorting the list of codes takes O(j log j) time.
-https://stackoverflow.com/questions/14434490/what-is-the-complexity-of-this-python-sort-method
-
-Total runtime is:
-
-2*O(a) + 2*O(b) + O(c) + O(d) + O(1) + O(e) + O(fg) + O(fh) + O(fi) + O(j log j) 
-
-Simplified and rearranged runtime is: 
-O(j log j) + O(fg) + O(fh) + O(fi) + O(a) + O(b) + O(c) + O(d) + O(e) + O(1)
+Simplify by taking the largest number of elements (a), runtime is O(a).
 
 """
 
 """
+Part B (own notes):
 
-Own Notes
+What percentage of calls from fixed lines in Bangalore are made
+to fixed lines also in Bangalore? In other words, of all the calls made
+from a number starting with "(080)", what percentage of these calls
+were made to a number also starting with "(080)"?
 
-Part B:
+Fixed Lines also in Bangalore / Calls from fixed lines in bangalore
 
 Objective: Find percentage of calls from Bangalore are also to Bangalore
 
@@ -151,75 +144,32 @@ Steps:
 # Of the calls from Bangalore, 
 find the calls that are also to Bangalore
 # Compute percentage
-
 """
 
-BANGALORE = '080'
-calls_from_bangalore = []
-calls_from_to_bangalore = []
+BANGALORE = '(080)'
+number_of_calls_from_bangalore = 0
+number_of_calls_from_and_to_bangalore = 0
 
 for call in calls:
   call_from = call[0]
 
-  if call_from.startswith('('):
-    code = call_from[call_from.find('(')+1:call_from.find(')')] 
-    
-    if code == BANGALORE:
-      calls_from_bangalore.append(code)
-      call_to = call[1]
+  if BANGALORE in call_from:
+    number_of_calls_from_bangalore += 1
 
-      if call_to.startswith('('):
-        code = call_to[call_to.find('(')+1:call_to.find(')')] 
-        
-        if code == BANGALORE:
-          calls_from_to_bangalore.append(code)
+    call_to = call[1]
+    if BANGALORE in call_to:
+      number_of_calls_from_and_to_bangalore += 1
 
-  
-num_calls_from_bangalore = len(calls_from_bangalore)
-num_calls_from_to_bangalore = len(calls_from_to_bangalore)
+percent_of_calls_from_bangalore_to_bangalore = round(number_of_calls_from_and_to_bangalore / number_of_calls_from_bangalore, 2) * 100 
 
-percent_calls_from_to_bangalore = round(num_calls_from_to_bangalore / num_calls_from_bangalore, 2) * 100
-
-# print('\n')
-# print('PART B')
-# print('{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.'.format(percent_calls_from_to_bangalore))
-
+print('\n')
+print('PART B')
+print('{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.'.format(percent_of_calls_from_bangalore_to_bangalore))
 
 """
 
 TASK 3B  Runtime Analysis
 
-Note: I tried using fewer variables here to simplify, but representation is not as accurate.
-
-(1)
-The for loop takes O(n) time
-
-Python's startswith takes O(1) time
-
-Python's find function takes O(mn) time
-
-Python's len function takes O(1) time
-https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt
-
-(2)
-Worst case runtime is:
-
-for loop: O(n)
-
-startswith: 2 * O(1)
-
-find: 4 * O(mn)
-
-len: O(1)
-
-4*O(mn) + O(n) + 3 * O(1)
-
-which simplifies to:
-
-O(mn) + O(n) + O(1)
-
-and taking the longest runtime would give us:
-
-O(mn)
+For loop takes O(n) time
 
 """
