@@ -21,6 +21,13 @@ class Stack:
         for idx, element in enumerate(old_arr):
             self.arr[idx] = old_arr[idx]
 
+  def size(self):
+    return self.num_elements
+
+  def is_empty(self):
+    return self.num_elements == 0
+
+
 """
 # Test creating the Stack
 foo = Stack()
@@ -46,9 +53,11 @@ foo.push(10) # Array at capacity
 foo.push(11) # Array increases in size
 print(foo.arr) # new array
 print("Pass" if len(foo.arr) == 20 else "Fail") # Array size should be 20 if doubled the size
+
+# size and is_empty
+foo = Stack()
+foo.push('test')
+print(foo.is_empty())
+print(foo.size())
+
 """
-
-
-
-
-
