@@ -21,4 +21,10 @@ class Stack:
             self.head = new_node
 
         self.num_elements += 1
+
+    def size(self):
+        return self.num_elements
+    
+    def is_empty(self):
+        return self.num_elements == 0
         
