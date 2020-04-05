@@ -76,6 +76,23 @@ def evaluate_post_fix(input_list):
     
     return stack.pop()
 
+def test_function_post_fix(test_case):
+    output = evaluate_post_fix(test_case[0])
+    print(output)
+    if output == test_case[1]:
+        print("Pass")
+    else:
+        print("Fail")
+
+test_case_1 = [["3", "1", "+", "4", "*"], 16]
+test_function_post_fix(test_case_1)
+
+test_case_2 = [["4", "13", "5", "/", "+"], 6]
+test_function_post_fix(test_case_2)
+
+test_case_3 = [["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"], 22]
+test_function_post_fix(test_case_3)
+
 def reverse_stack(stack):
     """
     Reverse a given input stack
