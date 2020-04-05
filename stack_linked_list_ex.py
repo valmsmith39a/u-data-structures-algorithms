@@ -75,4 +75,50 @@ def evaluate_post_fix(input_list):
             stack.push(int(x))
     
     return stack.pop()
+
+def reverse_stack(stack):
+    """
+    Reverse a given input stack
+
+    Args:
+        stack(stack): Input stack to be reversed
+    Returns:
+        stack: Reversed Stack
+    """
+
+    holder_stack = Stack()
+    while not stack.is_empty():
+        popped_element = stack.pop()
+        holder_stack.push(popped_element)
+
+    return holder_stack
+
+def reverse_stack_recursion(stack, holder_stack):
+    if stack.is_empty():
+      return
+    holder_stack.push(stack.pop())
+    reverse_stack_recursion(stack, holder_stack)
+
+def test_function(test_case):
+    stack = Stack()
+    holder_stack = Stack() # own addition for recursive version
+    for num in test_case:
+        stack.push(num)
     
+    reverse_stack(stack)
+    reverse_stack_recursion(stack, holder_stack)
+    index = 0
+    while not stack.is_empty():
+        popped = stack.pop()
+        if popped != test_case[index]:
+            print("Fail")
+            return
+        else:
+            index += 1
+    print("Pass")
+
+test_case_1 = [1, 2, 3, 4]
+test_function([1, 2, 3, 4])
+
+test_case_2 = [1]
+test_function(test_case_2)
