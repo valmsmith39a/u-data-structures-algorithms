@@ -4,3 +4,10 @@ class Queue:
         self.next_index = 0
         self.front_index = -1
         self.queue_size = 0
+
+     def enqueue(self, value):
+        self.arr[self.next_index] = value
+        self.queue_size += 1
+        self.next_index = (self.next_index + 1) % len(self.arr)
+        if self.front_index == -1:
+            self.front_index = 0
