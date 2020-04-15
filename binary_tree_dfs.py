@@ -49,13 +49,12 @@ class Tree():
 
 
 tree = Tree('apple')
-tree.get_root().set_left_child('banana')
-tree.get_root().set_right_child('cherry')
-tree.get_root().set_left_child('dates')
+tree.get_root().set_left_child(Node('banana'))
+tree.get_root().set_right_child(Node('cherry'))
+tree.get_root().get_left_child().set_left_child(Node('dates'))
 
 # Binary tree traversal depth first, pre-order traversal with a stack
 # Stack using a list
-
 
 class Stack():
 
@@ -87,7 +86,6 @@ class Stack():
         else:
             return "<stack is empty>"
 
-
 # check Stack
 stack = Stack()
 stack.push("apple")
@@ -97,3 +95,44 @@ stack.push("dates")
 print(stack.pop())
 print("\n")
 print(stack)
+
+###
+
+visit_order = list()
+stack = Stack()
+
+node = tree.get_root()
+stack.push(node)
+
+print(f"""
+visit_order {visit_order}
+stack:
+{stack}
+""")
+
+visit_order.append(node.get_value())
+print(f"""visit order {visit_order} 
+{stack})
+""")
+
+print(f"{node} has left child? {node.has_left_child()}")
+
+print(node.get_left_child())
+
+if node.has_left_child():
+  node = node.get_left_child()
+  stack.push(node)
+
+print(f"""
+visit_order {visit_order} 
+stack:
+{stack}
+""")
+
+print(f"visit {node}")
+visit_order.append(node.get_value())
+print(f"""visit_order {visit_order}""")
+
+# depth first search, pre-order traversal
+# get the node and push it to the stack
+# visit the node (get_value) and add it to the stack
