@@ -54,3 +54,46 @@ tree.get_root().set_right_child('cherry')
 tree.get_root().set_left_child('dates')
 
 # Binary tree traversal depth first, pre-order traversal with a stack
+# Stack using a list
+
+
+class Stack():
+
+    def __init__(self):
+        self.list = list()
+
+    def push(self, value):
+        self.list.append(value)
+
+    def pop(self):
+        self.list.pop()
+
+    def top(self):
+        if len(self.list) > 0:
+            return self.list[-1]
+        return None
+
+    def is_empty(self):
+        return len(self.list) == 0
+
+    def __repr__(self):
+        if len(self.list) > 0:
+            s = "<top of stack>\n_________________\n"
+            s += "\n_________________\n".join([str(item)
+                                               for item in self.list[::-1]])
+            s += "\n_________________\n<bottom of stack>"
+            return s
+
+        else:
+            return "<stack is empty>"
+
+
+# check Stack
+stack = Stack()
+stack.push("apple")
+stack.push("banana")
+stack.push("cherry")
+stack.push("dates")
+print(stack.pop())
+print("\n")
+print(stack)
