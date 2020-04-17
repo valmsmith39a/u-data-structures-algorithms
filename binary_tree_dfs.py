@@ -113,7 +113,7 @@ stack:
 """)
 
 visit_order.append(node.get_value())
-print(f"""visit order {visit_order} 
+print(f"""visit order {visit_order}
 {stack})
 """)
 
@@ -126,7 +126,7 @@ if node.has_left_child():
     stack.push(node)
 
 print(f"""
-visit_order {visit_order} 
+visit_order {visit_order}
 stack:
 {stack}
 """)
@@ -146,7 +146,7 @@ if node.has_left_child():
     stack.push(node)
 
 print(f"""
-visit_order {visit_order} 
+visit_order {visit_order}
 stack:
 {stack}
 """)
@@ -188,9 +188,9 @@ print(node.has_right_child())
 if node.has_right_child():
     node = node.get_right_child()
     stack.push(node)
-    
+
 print(f"""
-visit_order {visit_order} 
+visit_order {visit_order}
 stack
 {stack}""")
 
@@ -211,7 +211,7 @@ print(f"{node} has right child? {node.has_right_child()}")
 print(f"pop {stack.pop()} off the stack")
 
 print(f"""
-visit_order {visit_order} 
+visit_order {visit_order}
 stack
 {stack}
 """)
@@ -219,33 +219,35 @@ stack
 print(f"pop {stack.pop()} off stack")
 print(f"pre-order traversal visited nodes in this order: {visit_order}")
 
+
 class State(object):
-    def __init__(self,node):
+    def __init__(self, node):
         self.node = node
         self.visited_left = False
         self.visited_right = False
-        
+
     def get_node(self):
         return self.node
-    
+
     def get_visited_left(self):
         return self.visited_left
-    
+
     def get_visited_right(self):
         return self.visited_right
-    
+
     def set_visited_left(self):
         self.visited_left = True
-        
+
     def set_visited_right(self):
         self.visited_right = True
-        
+
     def __repr__(self):
         s = f"""{self.node}
 visited_left: {self.visited_left}
 visited_right: {self.visited_right}
         """
         return s
+
 
 def pre_order_with_stack(tree, debug_mode=False):
   visit_order = list()
@@ -272,20 +274,83 @@ def pre_order_with_stack(tree, debug_mode=False):
       visit_order.append(node.get_value())
       state = State(node)
       stack.push(state)
-    
-    else: 
+
+    else:
       stack.pop()
 
       if not stack.is_empty():
         state = stack.top()
         node = state.get_node()
-      else: 
+      else:
         node = None
 
     return visit_order
 
+def pre_order_recurse(tree):
+  visit_order = list()
+  root = tree.get_root()
 
+  def traverse(node):
+
+    if node:
+      visit_order.append(node.get_value())
       
+      traverse(node.get_left_child())
+
+      traverse(node.get_right_child())
+
+  traverse(root)
+
+  return visit_order
+
+print('pre order tree traversal recurse: ', pre_order_recurse(tree))
+
+def in_order_recurse(tree):
+  visit_order = list()
+  root = tree.get_root()
+
+  def traverse(node):
+    if node:
+      # traverse left
+      traverse(node.get_left_child())
+
+      # visit the node
+      visit_order.append(node.get_value())
+
+      # traverse right
+      traverse(node.get_right_child())
+
+  traverse(root)
+
+  return visit_order
+
+print(f'in_order_recurse(tree): {in_order_recurse(tree)}')
+     
+def post_order_recurse(tree):
+
+  visit_order = list()
+  root = tree.get_root()
+
+  def traverse(node):
+    if node:
+      # traverse left
+      traverse(node.get_left_child())
+      
+      # traverse right
+      traverse(node.get_right_child())
+
+      # visit the node
+      visit_order.append(node.get_value())
+
+  traverse(root)
+
+  return visit_order
+
+print(f'post order traversal, visit order: {post_order_recurse(tree)}')
+
+
+
+
 
 
   
