@@ -250,112 +250,107 @@ visited_right: {self.visited_right}
 
 
 def pre_order_with_stack(tree, debug_mode=False):
-  visit_order = list()
-  stack = Stack()
-  node = tree.get_root()
-  visit_order.append(node.get_value())
-  state = State(node)
-  stack.push(state)
-  count = 0
+    visit_order = list()
+    stack = Stack()
+    node = tree.get_root()
+    visit_order.append(node.get_value())
+    state = State(node)
+    stack.push(state)
+    count = 0
 
-  while(node):
-    count += 1
+    while(node):
+        count += 1
 
-    if node.has_left_child() and not state.get_visited_left():
-      state.set_visited_left()
-      node = node.get_left_child()
-      visit_order.append(node.get_value())
-      state = State(node)
-      stack.push(state)
+        if node.has_left_child() and not state.get_visited_left():
+            state.set_visited_left()
+            node = node.get_left_child()
+            visit_order.append(node.get_value())
+            state = State(node)
+            stack.push(state)
 
-    elif node.has_right_child() and not state.get_visited_right():
-      state.set_visited_right()
-      node = node.get_right_child()
-      visit_order.append(node.get_value())
-      state = State(node)
-      stack.push(state)
+        elif node.has_right_child() and not state.get_visited_right():
+            state.set_visited_right()
+            node = node.get_right_child()
+            visit_order.append(node.get_value())
+            state = State(node)
+            stack.push(state)
 
-    else:
-      stack.pop()
+        else:
+            stack.pop()
 
-      if not stack.is_empty():
-        state = stack.top()
-        node = state.get_node()
-      else:
-        node = None
+            if not stack.is_empty():
+                state = stack.top()
+                node = state.get_node()
+            else:
+                node = None
+
+        return visit_order
+
+
+def pre_order_recurse(tree):
+    visit_order = list()
+    root = tree.get_root()
+
+    def traverse(node):
+
+        if node:
+            visit_order.append(node.get_value())
+
+            traverse(node.get_left_child())
+
+            traverse(node.get_right_child())
+
+    traverse(root)
 
     return visit_order
 
-def pre_order_recurse(tree):
-  visit_order = list()
-  root = tree.get_root()
-
-  def traverse(node):
-
-    if node:
-      visit_order.append(node.get_value())
-      
-      traverse(node.get_left_child())
-
-      traverse(node.get_right_child())
-
-  traverse(root)
-
-  return visit_order
 
 print('pre order tree traversal recurse: ', pre_order_recurse(tree))
 
+
 def in_order_recurse(tree):
-  visit_order = list()
-  root = tree.get_root()
+    visit_order = list()
+    root = tree.get_root()
 
-  def traverse(node):
-    if node:
-      # traverse left
-      traverse(node.get_left_child())
+    def traverse(node):
+        if node:
+            # traverse left
+            traverse(node.get_left_child())
 
-      # visit the node
-      visit_order.append(node.get_value())
+            # visit the node
+            visit_order.append(node.get_value())
 
-      # traverse right
-      traverse(node.get_right_child())
+            # traverse right
+            traverse(node.get_right_child())
 
-  traverse(root)
+    traverse(root)
 
-  return visit_order
+    return visit_order
+
 
 print(f'in_order_recurse(tree): {in_order_recurse(tree)}')
-     
+
+
 def post_order_recurse(tree):
 
-  visit_order = list()
-  root = tree.get_root()
+    visit_order = list()
+    root = tree.get_root()
 
-  def traverse(node):
-    if node:
-      # traverse left
-      traverse(node.get_left_child())
-      
-      # traverse right
-      traverse(node.get_right_child())
+    def traverse(node):
+        if node:
+            # traverse left
+            traverse(node.get_left_child())
 
-      # visit the node
-      visit_order.append(node.get_value())
+            # traverse right
+            traverse(node.get_right_child())
 
-  traverse(root)
+            # visit the node
+            visit_order.append(node.get_value())
 
-  return visit_order
+    traverse(root)
+
+    return visit_order
+
 
 print(f'post order traversal, visit order: {post_order_recurse(tree)}')
-
-
-
-
-
-
-  
-
-
-  
-
 
