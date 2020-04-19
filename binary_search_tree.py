@@ -80,7 +80,7 @@ class Tree():
         """
         0 means new_node equals node
         -1 means new node less than existing node
-        1 means new node greater than existing node 
+        1 means new node greater than existing node
         """
         if new_node.get_value() == node.get_value():
             return 0
@@ -126,8 +126,28 @@ class Tree():
     try one or both ways
     """
 
+    def insert_node(self, node, new_node):
+        comparison = self.compare(node, new_node)
+        if comparison == -1:
+            if node.has_left_child():
+                self.insert_node(node.get_left_child(), new_node)
+            else:
+                node.set_left_child(new_node)
+
+        elif comparison == 1:
+            if node.has_right_child():
+                self.insert_node(node.get_right_child(), new_node)
+            else:
+                node.set_right_child(new_node)
+        else:
+            node.set_value(new_node.get_value())
+
     def insert_with_recursion(self, value):
-        pass
+        print('value', value)
+        if self.get_root() is None:
+            self.set_root(value)
+            return
+        self.insert_node(self.get_root(), Node(value))
 
     def __repr__(self):
         level = 0
@@ -164,10 +184,21 @@ class Tree():
         return s
 
 
+"""
 tree = Tree()
 tree.insert_with_loop(5)
 tree.insert_with_loop(6)
 tree.insert_with_loop(4)
 tree.insert_with_loop(2)
 tree.insert_with_loop(5)  # insert duplicate
+print(tree)
+"""
+
+
+tree = Tree()
+tree.insert_with_recursion(5)
+tree.insert_with_recursion(6)
+tree.insert_with_recursion(4)
+tree.insert_with_recursion(2)
+tree.insert_with_recursion(5)  # insert duplicate`
 print(tree)
