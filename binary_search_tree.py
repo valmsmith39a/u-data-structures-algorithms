@@ -1,6 +1,3 @@
-# this code makes the tree that we'll traverse
-
-
 from collections import deque
 
 
@@ -98,7 +95,31 @@ class Tree():
     """
 
     def insert_with_loop(self, new_value):
-        pass
+        new_node = Node(new_value)
+        node = self.get_root()
+
+        if node == None:
+            self.root = new_node
+            return
+
+        while (True):
+            comparison = self.compare(node, new_node)
+            if comparison == -1:
+                if node.has_left_child():
+                    node = node.get_left_child()
+                else:
+                    node.set_left_child(new_node)
+                    break
+
+            elif comparison == 1:
+                if node.has_right_child():
+                    node = node.get_right_child()
+                else:
+                    node.set_right_child(new_node)
+                    break
+            else:
+                node.set_value(new_node.get_value())
+                break
 
     """
     define insert here (can use recursion)
@@ -141,3 +162,12 @@ class Tree():
                 previous_level = level
 
         return s
+
+
+tree = Tree()
+tree.insert_with_loop(5)
+tree.insert_with_loop(6)
+tree.insert_with_loop(4)
+tree.insert_with_loop(2)
+tree.insert_with_loop(5)  # insert duplicate
+print(tree)
