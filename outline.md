@@ -39,9 +39,37 @@ For interviews:
 Create a Hash Table
 Know the upsides/downsides of your hash function
 
-Hash Functions
-
+Simple Hash Function
 * Sum ascii values of a string 'abcd' (ex. ord(a) == 97)
+
+Hash Map:
+* We need to store key/value pairs
+* We can use 2 arrays, linked-lists, stacks, queues: but would have O(n) run-times
+because need to traverse the data structure to find the key
+* For an array, to find an element at an index (ex a[5]) takes constant O(1) time.
+* We can think of the indexes as keys
+* So for keys that are non-zero integers, we can use an array
+* Now we need a function that can produce integer keys from any input
+
+Hash Functions
+* Hash functions enable use to create integer keys (indexes for our array) from any input
+* Hash functions can map data of any size to date of fixed size (hash code)
+* Ex. input a string key into hash function to output an integer value
+* Map data to an integer value
+
+Popular Hash Function
+
+a * p^(n) + b * p^(n-1) + c * p^(n-2)... 
+
+ascii * prime number (31, 37)^(n)
+n -> 0
+
+* We store the hash codes in a "bucket array". Each entry is called a "bucket".
+Index of each "bucket" is a "bucket index"
+
+
+
+
 
 
 
