@@ -50,7 +50,13 @@ class HashMap():
         self.num_entries += 1
 
     def get(self, key):
-        pass
+        bucket_index = self.get_hash_code(key)
+        head = self.bucket_array[bucket_index]
+        while head is not None:
+            if head.key == key:
+                return head.value
+            head = head.next
+        return None
 
     def get_bucket_index(self, key):
         return self.get_hash_code(key)
