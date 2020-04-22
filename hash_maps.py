@@ -16,6 +16,14 @@ def hash_function(string):
     return hash_code
 
 
+class LinkedListNode:
+
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+        self.next = None
+
+
 class HashMap():
 
     def __init__(self, initial_size=10):
@@ -24,7 +32,22 @@ class HashMap():
         self.num_entries = 0
 
     def put(self, key, value):
-        pass
+        bucket_index = self.get_bucket_index(key)
+        new_node = LinkedListNode(key, value)
+        head = self.bucket_array[bucket_index]
+
+        # if key is present in map, update the value
+        while head is not None:
+            if head.key == key:
+                head.value = value
+                return
+            head = head.next
+
+        # key not found in chain -> create new entry, insert at head of chain
+        head = self.bucket_array[bucket_index]
+        new_node.next = head
+        self.bucket_array[bucket_index] = new_node
+        self.num_entries += 1
 
     def get(self, key):
         pass
