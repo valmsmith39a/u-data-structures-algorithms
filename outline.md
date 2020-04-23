@@ -67,6 +67,19 @@ n -> 0
 * We store the hash codes in a "bucket array". Each entry is called a "bucket".
 Index of each "bucket" is a "bucket index"
 
+***
+
+Time Complexity
+
+Primary component is the linked list traversal because length of the string is very small compared to the number of entries so we can disregard it.
+
+O (n/b)
+n key/value pairs
+b buckeets
+
+n/b <= 0.7 (load factor)
+
+
 
 
 

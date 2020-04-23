@@ -78,6 +78,19 @@ class HashMap():
     def size(self):
         return self.num_entries
 
+    def _rehash(self):
+        old_num_buckets = len(self.bucket_array)
+        old_bucket_array = self.bucket_array
+        num_buckets = 2 * old_num_buckets
+        self.bucket_array = [None for _ in range(num_buckets)]
+
+        for head in old_bucket_array:
+            while head is not None:
+                key = head.key
+                value = head.value
+                self.put(key, value)
+                head = head.next
+
 
 hash_map = HashMap()
 
