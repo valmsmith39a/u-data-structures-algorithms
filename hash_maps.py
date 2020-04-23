@@ -91,6 +91,23 @@ class HashMap():
                 self.put(key, value)
                 head = head.next
 
+    def delete(self, key):
+        bucket_index = self.get_bucket_index(key)
+        head = self.bucket_array[bucket_index]
+        previous = None
+
+        while head is not None:
+            if head.key == key:
+                if previous is None:
+                    self.bucket_array[bucket_index] = head.next
+                else:
+                    previous.next = head.next
+                self.num_entries -= 1
+                return
+            else:
+                previous = head
+                head = head.next
+
 
 hash_map = HashMap()
 
@@ -108,3 +125,10 @@ print("three: {}".format(hash_map.get("three")))
 print("john's height {}".format(hash_map.get("john")))
 print("mary's heigh {}".format(hash_map.get("mary")))
 print("size: {}".format(hash_map.size()))
+
+hash_map.delete("neo")
+print("size: {}".format(hash_map.size()))
+print(hash_map.get("neo"))
+hash_map.put("neo", 13)
+print("size: {}".format(hash_map.size()))
+print(hash_map.get("neo"))
