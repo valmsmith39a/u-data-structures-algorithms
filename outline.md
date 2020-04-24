@@ -79,6 +79,15 @@ b buckeets
 
 n/b <= 0.7 (load factor)
 
+***
+
+Can use either list of lists
+
+or 
+
+Dictionary
+
+***
 
 
 
