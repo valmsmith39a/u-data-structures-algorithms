@@ -21,4 +21,9 @@ run-time
 * Can create a results table to help compute run-time. Ex. Array Size and Number of iterations
 
 
+Trie: type of binary tree
+
+* 
+
+
 
