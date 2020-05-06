@@ -23,7 +23,31 @@ run-time
 
 Trie: type of binary tree
 
-* 
+Heaps:
 
+* Binary min-heap
+
+* Binary max-heap
+
+* Search in a binary tree: O(n)
+* Worst case: O(1/2 n)
+
+* Tips for binary max-heap:
+
++ If target is larger than node, skip the sub-trees
+
++ Insert/Extract: O (log n) in the worst case
+
+Trees
+
+* Balanced tree: Nodes condensed to only a few levels
+
+* Unbalanced tree: Nodes spread out among many levels
+
+* Extreme unbalanced tree: Linked List 
+
+* Self balancing tree: use as few levels as possible using insert/delete
+
+*
 
 

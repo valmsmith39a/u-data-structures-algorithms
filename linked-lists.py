@@ -1,4 +1,4 @@
-# create a node 
+# create a node
 """
 class Node:
 	def __init__(self, value):
@@ -40,8 +40,10 @@ def print_linked_list(head):
 		print(current_node.value)
 		current_node = current_node.next
 """
-# create a linked list: method 1 
+# create a linked list: method 1
 # runtime is O(n^2), quadratic time
+
+
 def create_linked_list(input_list):
     """
     Function to create a linked list
@@ -57,7 +59,7 @@ def create_linked_list(input_list):
     # use head to get the first node
     # use current_node to move to the end of the list
     # then create the next node
-    # i = 3, ... 
+    # i = 3, ...
 
     head = None
     for i in input_list:
@@ -68,8 +70,9 @@ def create_linked_list(input_list):
             while current.next:
                 current = current.next
             current.next = Node(i)
-        
+
     return head
+
 
 """
 input_values = [1, 2, 3, 4, 5, 6]
@@ -80,19 +83,23 @@ print_linked_list(new_head)
 
 # create linked list: method 2
 # runtime is O(n), linear time
+
+
 def create_linked_list_better(input_values):
-  head = None
-  tail = None
+    head = None
+    tail = None
 
-  for value in input_values:
-    if head is None:
-      head = Node(value)
-      tail = head
-    else:
-      tail.next = Node(value)
-      tail = tail.next
+    for value in input_values:
+        if head is None:
+            head = Node(value)
+            tail = head
+        else:
+            tail.next = Node(value)
+            tail = tail.next
 
-  return head
+    return head
+
+
 """
 input_values = [1, 2, 3, 4, 5, 6]
 new_head = create_linked_list_better(input_values)
@@ -100,46 +107,48 @@ print('create a new linked list, the values are: ')
 print_linked_list(new_head)
 """
 
-"""
 # Define a Singly Linked List class with methods that operate on the list
 
 # Define a node
+
+
 class Node:
-  def __init__(self, value):
-    self.value = value
-    self.next = None
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
 
 class LinkedList:
-  def __init__(self):
-    self.head = None
+    def __init__(self):
+        self.head = None
 
-  # add a node to the end of the list
-  # method takes O(n) time, linear time
-  def append(self, value):
-    if self.head is None:
-      self.head = Node(value)
-      return
-    
-    node = self.head
-    while node.next:
-      node = node.next
-    
-    node.next = Node(value)
-    node = node.next
-    return
-  
-  # convert linked list to a Python list
-  def to_list(self):
-    # iterate through linked list and insert value of each node into the python list
-    # get the head
-    node = self.head
-    py_list = []
-    
-    while node:
-      py_list.append(node.value)
-      node = node.next
-    
-    return py_list
+    # add a node to the end of the list
+    # method takes O(n) time, linear time
+    def append(self, value):
+        if self.head is None:
+            self.head = Node(value)
+            return
+
+        node = self.head
+        while node.next:
+            node = node.next
+
+        node.next = Node(value)
+        node = node.next
+        return
+
+    # convert linked list to a Python list
+    def to_list(self):
+        # iterate through linked list and insert value of each node into the python list
+        # get the head
+        node = self.head
+        py_list = []
+
+        while node:
+            py_list.append(node.value)
+            node = node.next
+
+        return py_list
 
 
 # create a LinkedList object
@@ -153,9 +162,8 @@ linked_list.append(3)
 # print out values of linked list
 node = linked_list.head
 while node:
-  print(node.value)
-  node = node.next
-"""
+    print(node.value)
+    node = node.next
 
 # Define a doubly linked list class with methods that operate on the list
 """
@@ -199,39 +207,41 @@ while node:
   node = node.next
 """
 
+
 class Node:
-  def __init__(self, value):
-    self.value = value
-    self.next = None
+    def __init__(self, value):
+        self.value = value
+        self.next = None
 
 
 class LinkedList:
-  def __init__(self):
-    self.head = None
-  
-  # runtime: O(1) time, constant time
-  def prepend(self, value):
-    if self.head is None:
-      self.head = Node(value)
-      return 
-    
-    new_head = Node(value)
-    new_head.next = self.head
-    self.head = new_head
-    return
+    def __init__(self):
+        self.head = None
 
-  def search(self, value):
-    if self.head is None:
-      return None
+    # runtime: O(1) time, constant time
+    def prepend(self, value):
+        if self.head is None:
+            self.head = Node(value)
+            return
 
-    node = self.head
-      
-    while node:
-      if node.value is value:
-        return node
-      node = node.next
+        new_head = Node(value)
+        new_head.next = self.head
+        self.head = new_head
+        return
 
-    return None
+    def search(self, value):
+        if self.head is None:
+            return None
+
+        node = self.head
+
+        while node:
+            if node.value is value:
+                return node
+            node = node.next
+
+        return None
+
 
 # Test prepend
 linked_list = LinkedList()
@@ -242,8 +252,8 @@ linked_list.prepend(3)
 node = linked_list.head
 
 while node:
-  print(node.value)
-  node = node.next
+    print(node.value)
+    node = node.next
 
 # Test search
 """
@@ -252,70 +262,78 @@ print('found node', found_node.value)
 """
 
 # Runtime: O(n), linear time
+
+
 def remove(self, value):
-  """ Remove first occurrence of value. """
+    """ Remove first occurrence of value. """
 
-  if self.head is None:
-      return
-
-  if self.head.value == value:
-      self.head = self.head.next
-      return
-
-  node = self.head
-
-  while node.next:
-    if node.next.value == value:
-        node.next = node.next.next
+    if self.head is None:
         return
-    node = node.next
+
+    if self.head.value == value:
+        self.head = self.head.next
+        return
+
+    node = self.head
+
+    while node.next:
+        if node.next.value == value:
+            node.next = node.next.next
+            return
+        node = node.next
+
 
 def pop(self):
-  """ Return the first node's value and remove it from the list. """
+    """ Return the first node's value and remove it from the list. """
 
-  if self.head is None:
-      return None
+    if self.head is None:
+        return None
 
-  node = self.head
-  self.head = self.head.next
+    node = self.head
+    self.head = self.head.next
 
-  return node.value
+    return node.value
+
 
 def insert(self, value, pos):
-  """ Insert value at pos position in the list. If pos is larger than the
-      length of the list, append to the end of the list. """
-      
-  if pos == 0:
-      self.prepend(value)
-      return
-  
-  node = self.head
-  index = 0
-  
-  while node.next and index <= pos:
-      if (pos - 1) == index:
-          new_node = Node(value)
-          new_node.next = node.next
-          node.next = new_node
-          return 
-      node = node.next
-      index +=1
-  else:
-      self.append(value)
+    """ Insert value at pos position in the list. If pos is larger than the
+        length of the list, append to the end of the list. """
+
+    if pos == 0:
+        self.prepend(value)
+        return
+
+    node = self.head
+    index = 0
+
+    while node.next and index <= pos:
+        if (pos - 1) == index:
+            new_node = Node(value)
+            new_node.next = node.next
+            node.next = new_node
+            return
+        node = node.next
+        index += 1
+    else:
+        self.append(value)
 
 # runtime: O(n), linear time
+
+
 def size(self):
-  """ Return the size or length of the linked list. """
-  size = 0
-  node = self.head
-  while node:
-      size += 1
-      node = node.next
-      
-  return size
+    """ Return the size or length of the linked list. """
+    size = 0
+    node = self.head
+    while node:
+        size += 1
+        node = node.next
+
+    return size
 
 # reverse a linked list
 # runtime: O(n)
+
+
 def reverse(linked_list):
     new_list = LinkedList()
     prev_node = None
@@ -324,24 +342,24 @@ def reverse(linked_list):
         new_node = Node(value)
         new_node.next = prev_node
         prev_node = new_node
-  
+
     new_list.head = prev_node
 
     return new_list
 
+
 def iscircular(linked_list):
-  if linked_list.head is None:
+    if linked_list.head is None:
         return False
 
-  slow_runner = linked_list.head
-  fast_runner = linked_list.head
+    slow_runner = linked_list.head
+    fast_runner = linked_list.head
 
-  while fast_runner.next:
-      slow_runner = slow_runner.next
-      fast_runner = fast_runner.next.next
+    while fast_runner.next:
+        slow_runner = slow_runner.next
+        fast_runner = fast_runner.next.next
 
-      if slow_runner == fast_runner:
-          return True
+        if slow_runner == fast_runner:
+            return True
 
-  return False
-  
+    return False
