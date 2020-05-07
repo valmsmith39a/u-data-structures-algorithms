@@ -36,6 +36,32 @@ types
 
         space complexity: auxilary space = O(n), because copying into new arrays
 
+        number of inversions:
+
+            number of pairs of numbers that are inversted (out of order)
+
+    quick sort
+
+        divide and conquer
+
+        don't use if array almost sorted, bc will lead to worst case
+
+        best case is when pivots moved to center
+
+        run-time:
+
+            average: O(n log n)
+
+            worst case: O (n)
+
+        space complexity:
+
+            sorting in-place, so no extra space, so O(1)
+
+
+    heap sort
+
+        
 
 
     
