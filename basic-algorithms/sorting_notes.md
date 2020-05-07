@@ -32,7 +32,11 @@ types
 
         lower run-time, greater space compexity
 
-        
+        run-time: n comparisons for log n steps => O( n log n)
+
+        space complexity: auxilary space = O(n), because copying into new arrays
+
+
 
     
 

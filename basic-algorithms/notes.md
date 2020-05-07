@@ -48,6 +48,5 @@ Trees
 
 * Self balancing tree: use as few levels as possible using insert/delete
 
-*
 
 
