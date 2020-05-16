@@ -4,7 +4,7 @@ run-time
 
 * Every time double the size of the array, increase the number of times you search by 1 
 
-* Each time increment the exponent of base 2, (2^n), increase the number of times you search by 1
+* Each time increment the exponent of base 2, (2^x), increase the number of times you search by 1
 
 * Want something like: (The exponent of base 2) + 1
 
